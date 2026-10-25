@@ -1,0 +1,2 @@
+chrome.storage.local.get(['key','lastError','lastContact'],s=>{document.getElementById('key').value=s.key||'';document.getElementById('status').textContent=s.lastError||(s.lastContact?'再生情報の送信を受け付けました':'SoundCloudで曲を再生してください');});
+document.getElementById('save').onclick=async()=>{const key=document.getElementById('key').value.trim();if(!/^[a-f0-9]{48}$/.test(key)){document.getElementById('status').textContent='設定画面のキーをそのまま貼り付けてください';return;}await chrome.storage.local.set({key});document.getElementById('status').textContent='保存しました。SoundCloudで再生してください。';};

@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "SoundCloud → Discord Local",
+  "version": "1.0.2",
+  "description": "SoundCloudの再生情報を同じPCのDiscord連携プログラムに送信します。",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://soundcloud.com/*",
+        "https://www.soundcloud.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "SoundCloud → Discord"
+  }
+}
